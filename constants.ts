@@ -23,7 +23,7 @@ export const BUILDINGS_CONFIG: Record<BuildingType, BuildingConfig> = {
     type: BuildingType.TOWN_HALL,
     symbol: '🏰',
     costType: 'gold',
-    costAmount: 1000, // Usually unbuildable by player, upgraded instead, but for simplicity we price it high
+    costAmount: 1000,
     description: 'The heart of your village.'
   },
   [BuildingType.MINE]: {
@@ -58,4 +58,8 @@ export const BUILDINGS_CONFIG: Record<BuildingType, BuildingConfig> = {
     costAmount: 250,
     description: 'Defends your village.'
   }
+};
+
+export const getUpgradeCost = (baseCost: number, currentLevel: number): number => {
+  return Math.floor(baseCost * Math.pow(1.5, currentLevel));
 };
